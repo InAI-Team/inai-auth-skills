@@ -1,6 +1,11 @@
 ---
 name: inai-astro-sdk
 description: "Integrate InAI Auth SDK into Astro applications. Use this skill whenever the user wants to add authentication, login, signup, middleware protection, role-based access control (RBAC), MFA, or session management to an Astro app using @inai-dev/astro. Also trigger when the user mentions InAI auth with Astro, asks about protecting routes in Astro, needs server-side auth helpers (auth(), currentUser()), wants to set up auth API routes in Astro, or is building an SSR Astro site that needs authentication. Covers both the integration plugin and direct @inai-dev/backend usage."
+compatibility: "Requires Node.js 18+ and an Astro 6+ project with output: server (SSR)"
+metadata:
+  author: inai-team
+  version: "1.0.0"
+  framework: astro
 ---
 
 # InAI Auth SDK for Astro

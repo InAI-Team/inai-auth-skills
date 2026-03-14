@@ -1,6 +1,21 @@
 # InAI Auth SDK — Agent Skills
 
-Skills para integrar [InAI Auth](https://apiauth.inai.dev) en aplicaciones Next.js y Astro usando Claude Code.
+Skills para integrar [InAI Auth](https://apiauth.inai.dev) en aplicaciones Next.js y Astro. Compatible con multiples agentes de codigo.
+
+## Agentes compatibles
+
+Las skills se instalan automaticamente en todos los agentes soportados:
+
+| Agente | Tipo |
+|--------|------|
+| Claude Code | symlink |
+| Cursor | universal |
+| Codex | universal |
+| Gemini CLI | universal |
+| GitHub Copilot | universal |
+| Kiro CLI | symlink |
+| OpenCode | universal |
+| Antigravity | symlink |
 
 ## Skills disponibles
 
@@ -33,9 +48,11 @@ npx skills add InAI-Team/inai-auth-skills --skill inai-astro-sdk
 npx skills add InAI-Team/inai-auth-skills --all
 ```
 
+El instalador detecta automaticamente los agentes disponibles en tu sistema y configura las skills para cada uno (symlink o copia universal segun el agente).
+
 ## Requisitos
 
-- [Claude Code](https://claude.com/claude-code) instalado
+- Un agente de codigo compatible (ver tabla arriba)
 - Variable de entorno `INAI_PUBLISHABLE_KEY` configurada en tu proyecto (`pk_live_...`)
 
 ## Que cubre cada skill

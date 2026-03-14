@@ -1,0 +1,23 @@
+{
+  "name": "inai-auth-skills",
+  "owner": {
+    "name": "InAI Team",
+    "email": "dev@inai.dev"
+  },
+  "metadata": {
+    "description": "Agent skills for integrating InAI Auth SDK into Next.js and Astro applications",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "inai-auth-skills",
+      "description": "Collection of InAI Auth SDK integration skills for Next.js and Astro frameworks, including authentication, RBAC, MFA, middleware protection, and session management",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/inai-nextjs-sdk",
+        "./skills/inai-astro-sdk"
+      ]
+    }
+  ]
+}

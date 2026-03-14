@@ -1,6 +1,11 @@
 ---
 name: inai-nextjs-sdk
 description: "Integrate InAI Auth SDK into Next.js applications. Use this skill whenever the user wants to add authentication, login, signup, middleware protection, role-based access control (RBAC), MFA, or session management to a Next.js app using @inai-dev/nextjs. Also trigger when the user mentions InAI auth with Next.js, asks about protecting routes in Next.js, needs auth hooks (useAuth, useUser), wants to set up auth API routes, or is building an admin panel that needs platform authentication. Covers both app user auth and platform/admin auth flows."
+compatibility: "Requires Node.js 18+ and a Next.js 14+ project"
+metadata:
+  author: inai-team
+  version: "1.0.0"
+  framework: nextjs
 ---
 
 # InAI Auth SDK for Next.js
