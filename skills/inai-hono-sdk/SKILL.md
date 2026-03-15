@@ -48,7 +48,7 @@ app.use(
 1. Checks if request path matches `publicRoutes` — if so, sets `inaiAuth` context to `null` and proceeds
 2. Extracts token from `Authorization: Bearer <token>` header or `auth_token` cookie
 3. If token is expired and `refresh_token` cookie exists → auto-refresh
-4. Builds `AuthObject` from JWT claims and stores in Hono context as `inaiAuth`
+4. Verifies JWT signature using ES256 via JWKS, builds `AuthObject` and stores in Hono context as `inaiAuth`
 5. If no valid auth → calls `onUnauthorized` handler (default: 401 JSON response)
 
 ### Middleware configuration
@@ -60,6 +60,7 @@ inaiAuthMiddleware({
   onUnauthorized: (c) => {
     return c.json({ error: "Unauthorized" }, 401);
   },
+  // jwksUrl: "https://apiauth.inai.dev/.well-known/jwks.json", // optional override
 })
 ```
 
@@ -326,3 +327,5 @@ When you need to check implementation details, the source files are at:
 - `packages/hono/src/types.ts` — TypeScript interfaces & Hono type augmentation
 - `packages/backend/src/client.ts` — InAIAuthClient (core API client)
 - `packages/shared/src/constants.ts` — Cookie names, URLs, headers
+- `packages/shared/src/jwks.ts` — JWKSClient (JWKS key fetching, caching, error throttling)
+- `packages/shared/src/jwt.ts` — ES256 verification, JWT decoding

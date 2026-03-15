@@ -58,15 +58,16 @@ import { inaiAstroMiddleware } from "@inai-dev/astro/middleware";
 export const onRequest = inaiAstroMiddleware({
   publicRoutes: ["/", "/about", "/pricing"],
   signInUrl: "/login",
+  // jwksUrl: "https://apiauth.inai.dev/.well-known/jwks.json", // optional override
 });
 ```
 
 ### Middleware behavior
 
 1. Checks `auth_token` cookie
-2. Decodes JWT claims (no signature verification — the API is the security boundary)
+2. Verifies JWT signature using ES256 (ECDSA P-256) via JWKS — public keys are cached for 5 minutes with automatic retry on key rotation
 3. Populates `Astro.locals.auth` with an `AuthObject`
-4. Redirects unauthenticated users on protected routes to `signInUrl`
+4. Redirects unauthenticated users on protected routes to `signInUrl` (preserves original URL via `?returnTo=`)
 5. Auto-refreshes expired tokens when `refresh_token` exists
 
 ### Composing with other middleware
@@ -370,3 +371,5 @@ When you need to check implementation details, the source files are at:
 - `packages/astro/src/integration.ts` — Astro integration plugin
 - `packages/backend/src/client.ts` — InAIAuthClient (core API client)
 - `packages/shared/src/constants.ts` — Cookie names, URLs, headers
+- `packages/shared/src/jwks.ts` — JWKSClient (JWKS key fetching, caching, error throttling)
+- `packages/shared/src/jwt.ts` — ES256 verification, JWT decoding

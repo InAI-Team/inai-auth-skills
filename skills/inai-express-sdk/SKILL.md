@@ -49,7 +49,7 @@ app.use(
 1. Checks if request path matches `publicRoutes` — if so, sets `req.auth = null` and proceeds
 2. Extracts token from `Authorization: Bearer <token>` header or `auth_token` cookie
 3. If token is expired and `refresh_token` cookie exists → auto-refresh
-4. Builds `AuthObject` from JWT claims and attaches to `req.auth`
+4. Verifies JWT signature using ES256 via JWKS, builds `AuthObject` and attaches to `req.auth`
 5. If no valid auth → calls `onUnauthorized` handler (default: 401 JSON response)
 
 ### Middleware configuration
@@ -67,6 +67,7 @@ inaiAuthMiddleware({
   afterAuth: (auth, req, res) => {
     // Called after successful auth — useful for logging
   },
+  // jwksUrl: "https://apiauth.inai.dev/.well-known/jwks.json", // optional override
 })
 ```
 
@@ -291,3 +292,5 @@ When you need to check implementation details, the source files are at:
 - `packages/express/src/types.ts` — TypeScript interfaces
 - `packages/backend/src/client.ts` — InAIAuthClient (core API client)
 - `packages/shared/src/constants.ts` — Cookie names, URLs, headers
+- `packages/shared/src/jwks.ts` — JWKSClient (JWKS key fetching, caching, error throttling)
+- `packages/shared/src/jwt.ts` — ES256 verification, JWT decoding

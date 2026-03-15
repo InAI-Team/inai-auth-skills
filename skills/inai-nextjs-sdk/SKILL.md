@@ -93,6 +93,7 @@ import { inaiAuthMiddleware } from "@inai-dev/nextjs/middleware";
 export default inaiAuthMiddleware({
   publicRoutes: ["/", "/about", "/pricing", "/login", "/register"],
   signInUrl: "/login",
+  // jwksUrl: "https://apiauth.inai.dev/.well-known/jwks.json", // optional override
 });
 
 export const config = {
@@ -103,7 +104,7 @@ export const config = {
 ### Middleware behavior
 1. Built-in public routes (`/_next/*`, `/favicon.ico`, `/api/*`, `signInUrl`) pass through
 2. Your `publicRoutes` pass through
-3. Other requests check `auth_token` cookie
+3. Other requests verify `auth_token` JWT signature using ES256 via JWKS (cached 5 min, auto-retry on key rotation)
 4. Expired token + valid `refresh_token` → auto-refresh via `/api/auth/refresh`
 5. No valid auth → redirect to `signInUrl` with `returnTo` param
 
@@ -341,3 +342,5 @@ When you need to check implementation details, the source files are at:
 - `packages/react/src/context.tsx` — InAIAuthProvider
 - `packages/react/src/hooks/` — All React hooks
 - `packages/react/src/components/` — Pre-built components
+- `packages/shared/src/jwks.ts` — JWKSClient (JWKS key fetching, caching, error throttling)
+- `packages/shared/src/jwt.ts` — ES256 verification, JWT decoding

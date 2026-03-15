@@ -21,10 +21,10 @@ Las skills se instalan automaticamente en todos los agentes soportados:
 
 | Skill | Framework | Paquete | Descripcion |
 |-------|-----------|---------|-------------|
-| `inai-nextjs-sdk` | Next.js 14+ | `@inai-dev/nextjs` | Auth completo: Provider, middleware, API routes, hooks, componentes, RBAC, MFA |
-| `inai-astro-sdk` | Astro 6+ | `@inai-dev/astro` | Auth SSR: Integration plugin, middleware, API routes, server helpers, RBAC, MFA |
-| `inai-express-sdk` | Express 4+ | `@inai-dev/express` | Auth middleware, API routes, route protection, cookie management |
-| `inai-hono-sdk` | Hono 4+ | `@inai-dev/hono` | Auth middleware, API routes, route protection, Cloudflare Workers |
+| `inai-nextjs-sdk` | Next.js 14+ | `@inai-dev/nextjs` | Auth completo: Provider, middleware con verificación ES256 via JWKS, API routes, hooks, componentes, RBAC, MFA, y auto-refresh de tokens |
+| `inai-astro-sdk` | Astro 6+ | `@inai-dev/astro` | Auth SSR: Integration plugin, middleware con verificación ES256 via JWKS, API routes, server helpers, RBAC, MFA |
+| `inai-express-sdk` | Express 4+ | `@inai-dev/express` | Auth middleware con verificación ES256 via JWKS, API routes, route protection, cookie management |
+| `inai-hono-sdk` | Hono 4+ | `@inai-dev/hono` | Auth middleware con verificación ES256 via JWKS, API routes, route protection, Cloudflare Workers |
 | `inai-react-sdk` | React 18+ | `@inai-dev/react` | Provider, hooks, pre-built components, client-side auth state |
 
 ## Instalacion
@@ -123,3 +123,7 @@ El instalador detecta automaticamente los agentes disponibles en tu sistema y co
 - [`@inai-dev/hono`](https://www.npmjs.com/package/@inai-dev/hono) — Hono SDK
 - [`@inai-dev/react`](https://www.npmjs.com/package/@inai-dev/react) — React hooks y componentes
 - [`@inai-dev/backend`](https://www.npmjs.com/package/@inai-dev/backend) — Backend client
+
+## Soporte
+
+Visita [https://inai.dev](https://inai.dev) para documentación, guías y soporte.
