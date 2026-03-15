@@ -167,6 +167,8 @@ req.auth?.tenantId    // string | null
 req.auth?.orgId       // string | null
 req.auth?.orgRole     // string | null
 req.auth?.sessionId   // string | null
+req.auth?.roles       // string[]
+req.auth?.permissions // string[]
 req.auth?.has({ role: "admin" })           // boolean
 req.auth?.has({ permission: "posts:write" }) // boolean
 req.auth?.getToken()  // Promise<string | null>

@@ -216,9 +216,9 @@ configureAuth({
 
 | Hook | Returns |
 |------|---------|
-| `useAuth()` | `isLoaded`, `isSignedIn`, `userId`, `has()`, `signOut()` |
+| `useAuth()` | `isLoaded`, `isSignedIn`, `userId`, `roles`, `permissions`, `has()`, `signOut()` |
 | `useUser()` | `isLoaded`, `isSignedIn`, `user` (full UserResource) |
-| `useSession()` | `isLoaded`, `isSignedIn`, `userId`, `tenantId`, `orgId`, `orgRole` |
+| `useSession()` | `isLoaded`, `isSignedIn`, `userId`, `tenantId`, `orgId`, `orgRole`, `roles`, `permissions` |
 | `useOrganization()` | `isLoaded`, `orgId`, `orgRole` |
 
 ## Pre-Built Components

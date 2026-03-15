@@ -161,6 +161,8 @@ auth?.tenantId    // string | null
 auth?.orgId       // string | null
 auth?.orgRole     // string | null
 auth?.sessionId   // string | null
+auth?.roles       // string[]
+auth?.permissions // string[]
 auth?.has({ role: "admin" })           // boolean
 auth?.has({ permission: "posts:write" }) // boolean
 auth?.getToken()  // Promise<string | null>

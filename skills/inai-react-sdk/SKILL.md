@@ -62,7 +62,7 @@ Core hook for authentication state and actions.
 import { useAuth } from "@inai-dev/react";
 
 function MyComponent() {
-  const { isLoaded, isSignedIn, userId, has, signOut } = useAuth();
+  const { isLoaded, isSignedIn, userId, roles, permissions, has, signOut } = useAuth();
 
   if (!isLoaded) return <LoadingSpinner />;
   if (!isSignedIn) return <a href="/login">Sign in</a>;
@@ -80,7 +80,7 @@ function MyComponent() {
 }
 ```
 
-**Returns**: `{ isLoaded, isSignedIn, userId, has, signOut }`
+**Returns**: `{ isLoaded, isSignedIn, userId, roles, permissions, has, signOut }`
 
 - `has({ role?: string; permission?: string }): boolean` — check role or permission
 - `roles: string[]` — array of the user's assigned roles
@@ -118,12 +118,12 @@ Returns session and organization context.
 import { useSession } from "@inai-dev/react";
 
 function SessionInfo() {
-  const { isLoaded, isSignedIn, userId, tenantId, orgId, orgRole } = useSession();
+  const { isLoaded, isSignedIn, userId, tenantId, orgId, orgRole, roles, permissions } = useSession();
   // ...
 }
 ```
 
-**Returns**: `{ isLoaded, isSignedIn, userId, tenantId, orgId, orgRole }`
+**Returns**: `{ isLoaded, isSignedIn, userId, tenantId, orgId, orgRole, roles, permissions }`
 
 ### useOrganization()
 
