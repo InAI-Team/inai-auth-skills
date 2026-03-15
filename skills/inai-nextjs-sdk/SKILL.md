@@ -256,7 +256,7 @@ export function Navbar() {
 | Cookie | Purpose | httpOnly | Path | MaxAge |
 |--------|---------|----------|------|--------|
 | `auth_token` | Access JWT | Yes | `/` | Token expiry |
-| `refresh_token` | Refresh JWT | Yes | `/api/auth` | 7 days |
+| `refresh_token` | Refresh JWT | Yes | `/` | 7 days |
 | `auth_session` | User data (readable by JS) | No | `/` | Token expiry |
 
 The `auth_session` cookie is what the `InAIAuthProvider` reads on mount to hydrate client state without a network request.

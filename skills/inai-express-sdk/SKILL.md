@@ -179,7 +179,7 @@ req.auth?.getToken()  // Promise<string | null>
 | Cookie | Purpose | httpOnly | Path | MaxAge |
 |--------|---------|----------|------|--------|
 | `auth_token` | Access JWT | Yes | `/` | Token expiry |
-| `refresh_token` | Refresh JWT | Yes | `/api/auth` | 7 days |
+| `refresh_token` | Refresh JWT | Yes | `/` | 7 days |
 | `auth_session` | User data (readable by JS) | No | `/` | Token expiry |
 
 - Production (`NODE_ENV=production`): `secure: true` on all cookies
