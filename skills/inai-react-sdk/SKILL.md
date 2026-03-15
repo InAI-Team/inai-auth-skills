@@ -83,6 +83,8 @@ function MyComponent() {
 **Returns**: `{ isLoaded, isSignedIn, userId, has, signOut }`
 
 - `has({ role?: string; permission?: string }): boolean` — check role or permission
+- `roles: string[]` — array of the user's assigned roles
+- `permissions: string[]` — array of the user's granted permissions
 - `signOut(): Promise<void>` — calls `/api/auth/logout`, clears state, redirects to `/login`
 
 ### useUser()
